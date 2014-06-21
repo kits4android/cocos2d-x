@@ -18,6 +18,9 @@ def get_num_of_cpu():
 				return int(os.environ['NUMBER_OF_PROCESSORS'])
 			else:
 				return 1
+	        elif "linux" in platform:
+	        	import multiprocessing
+	        	return multiprocessing.cpu_count()
 		else:
 			from numpy.distutils import cpuinfo
 			return cpuinfo.cpu._getNCPUs()
